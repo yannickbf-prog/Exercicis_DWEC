@@ -1,47 +1,34 @@
-//Funcio per pasar string a array
-function stringToArray(string){
- return string.split(",");
-}
+//Arrow function per pasar string a array
+var stringToArray = (string) => string.split(",");
 
-//Funcio per pasar array a string
-function arrayToString(array){
-  return array.toString();
-}
-
-//Funcio per pintar resultats
-function pintarResultats(strResultats){
-  document.getElementById("results").innerHTML = strResultats;
-}
+//Arrow function per pasar array a string separat per comes i pintar resultats
+var pintarResultats = arrayResultats => document.getElementById("results").innerHTML = arrayResultats.toString();
 
 //Funcio per exercici 1 
 function strOrdenaMajor(){
-  var contingutCasella = document.getElementById("input1").value;
-  var contingutCasellaToArray = stringToArray(contingutCasella);
-  var ordenarAlfabeticament = contingutCasellaToArray.sort();
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
+  let ordenarAlfabeticament = contingutCasellaToArray.sort();
   pintarResultats(ordenarAlfabeticament);
 }
 
 //Funcio per exercici 2
 function numOrdenaMajor(){
-  var contingutCasella = document.getElementById("input1").value;
-  var contingutCasellaToArray = stringToArray(contingutCasella);
-  var ordenarMenorMajor = contingutCasellaToArray.sort();
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
+  let ordenarMenorMajor = parseInt(contingutCasellaToArray.sort());
   pintarResultats(ordenarMenorMajor);
 }
 
 //Funcio per exercici 3
 function numOrdenaMenor(){
-  var contingutCasella = document.getElementById("input1").value;
-  var contingutCasellaToArray = stringToArray(contingutCasella);
-  var ordenarMajorMenor = contingutCasellaToArray.sort(function(a, b){return b - a});
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
+  let ordenarMajorMenor = contingutCasellaToArray.sort(function(a, b){return b - a});
   pintarResultats(ordenarMajorMenor);
 }
 
 //Funcio per exercici 4
 function strOrdenaPerLong(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let arrayOrdenat = contingutCasellaToArray.sort(function(a, b) {
     //return a.lenght - b.length (no va)
@@ -64,10 +51,9 @@ function strOrdenaPerLong(){
 //No funciona no se perque
 function strArrayLongituds(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
-  var arrayLongitudStrArr = contingutCasellaToArray.map(function (str){
+  let arrayLongitudStrArr = contingutCasellaToArray.map(function (str){
     return str.length;
   });
 
@@ -77,10 +63,9 @@ function strArrayLongituds(){
 //Funcio per exercici 6
 function strCreaFraseGuions(){
   
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
-  var arrayAmbGuions = contingutCasellaToArray.map(function (str, index, array){
+  let arrayAmbGuions = contingutCasellaToArray.map(function (str, index, array){
     if(index != array.length-1){
       return str+"-";
     }
@@ -89,6 +74,8 @@ function strCreaFraseGuions(){
     }
   });
 
+  //Borrem posible contingut de sa casella de resultats
+  document.getElementById("results").innerHTML = "";
   //Pintam array
   arrayAmbGuions.forEach(elementArray => {
     document.getElementById("results").innerHTML += elementArray;
@@ -98,13 +85,14 @@ function strCreaFraseGuions(){
 //Funcio per exercici 7
 function strCreaAcronim(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
-  var arrayAcronim = contingutCasellaToArray.map(function (str){
+  let arrayAcronim = contingutCasellaToArray.map(function (str){
     return str.slice(0, 1).toUpperCase();
   });
 
+  //Borrem posible contingut de sa casella de resultats
+  document.getElementById("results").innerHTML = "";
   //Pintam array
   arrayAcronim.forEach(elementArray => {
     document.getElementById("results").innerHTML += elementArray;
@@ -114,8 +102,7 @@ function strCreaAcronim(){
 //Funcio per exercici 8
 function strFiltreLongitud(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let arrayAcronim = contingutCasellaToArray.filter(function (str){
     return str.length > 5;
@@ -127,8 +114,7 @@ function strFiltreLongitud(){
 //Funcio per exercici 9
 function numSumaForeach(){
   
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let sumaTotal = 0;
 
@@ -142,8 +128,7 @@ function numSumaForeach(){
 //Funcio per exercici 10
 function strOcurrencies(){
   
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let numOcc = 0;
 
@@ -159,8 +144,7 @@ function strOcurrencies(){
 //Funcio per exercici 11
 function numSumaReduce(){
   
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let sum = contingutCasellaToArray.reduce(function (a, b){
     return parseInt(a) + parseInt(b);
@@ -172,8 +156,7 @@ function numSumaReduce(){
 //Funcio per exercici 12
 function numMaxForeach(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let valorMesAlt = 0;
 
@@ -190,8 +173,7 @@ function numMaxForeach(){
 //Funcio per exercici 13
 function restructuraArray(){
   
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   //Agafem el primer i s'ultim element
   let arrPrimerElement = contingutCasellaToArray[0];
@@ -214,8 +196,7 @@ function restructuraArray(){
 //Funcio per exercici 14
 function capCuaArray(){
 
-  let contingutCasella = document.getElementById("input1").value;
-  let contingutCasellaToArray = stringToArray(contingutCasella);
+  let contingutCasellaToArray = stringToArray(document.getElementById("input1").value);
 
   let arrPrimers3 = contingutCasellaToArray.slice(0, 3);
   let arrSeguents = contingutCasellaToArray.slice(3);

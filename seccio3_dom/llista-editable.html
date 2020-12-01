@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seccio 3 - DOM</title>
+</head>
+
+<body>
+
+    
+</body>
+
+<script>
+
+    //Cream el div contenidor de la llista ordenada <ol>
+    var llistaOrdenada = document.createElement("ol");
+
+    //Funcio per afegir lo del input type text
+    function afegir(){
+        let elementLlista = document.createElement("li");
+        let botoBorrar = document.createElement("input");
+        botoBorrar.setAttribute( "type", "button" );
+        botoBorrar.setAttribute( "value", "Eliminar" );
+        botoBorrar.setAttribute( "onclick", "eliminar()" );
+        elementLlista.textContent = inputText.value;
+        elementLlista.appendChild(botoBorrar);
+        llistaOrdenada.appendChild(elementLlista);
+        divCont.appendChild(llistaOrdenada);
+    }
+
+    //Funcio per eliminar un element de la llista
+    function eliminar(){
+        let objecteAEliminar = llistaOrdenada.childNodes[(this.llistaOrdenada.childElementCount)-1];
+        llistaOrdenada.removeChild(objecteAEliminar);
+    }
+
+    //Cream tots el elements html que necesitem
+
+    //Cream un div container de tota l'aplicació
+    let divCont = document.createElement("div");
+    divCont.id = "cont_input";
+    //Crea un nou div contenidor dels 2 inputs
+    let divInputs = document.createElement("div");
+    //Li posem una clase
+    divInputs.className = "cont_input";
+    //Creem els 2 input
+    //Creem primer input (text a afejir)
+    let inputText = document.createElement("input");
+    //Afegim atribut
+    inputText.setAttribute( "type", "text" );
+    //Creem segon input
+    let inputButton = document.createElement("input");
+    //Afegim atributs
+    inputButton.setAttribute( "type", "button" );
+    inputButton.setAttribute( "value", "Add <li> element" );
+    inputButton.setAttribute( "onclick", "afegir()" );
+
+    //Els posem uns dins dels altres i pintam es div principal
+    divInputs.appendChild(inputText);
+    divInputs.appendChild(inputButton);
+    divCont.appendChild(divInputs);
+    
+    document.body.appendChild(divCont);
+</script>
+
+</html>
